@@ -53,6 +53,15 @@ function hideSpinner() {
 
 let storyUrl = './data/story.json';
 
+// 依次发出请求,按返回顺序加载页面
+getJSON(storyUrl).then(story => {
+    addTitleToPage(story.title);
+    story.chapterUrls.forEach(chapterUrl => {
+        getJSON(chapterUrl).then(addChapterToPage);
+    });
+})
+hideSpinner();
+
 // 获取到一个段落后再请求下一个段落
 // getJSON(storyUrl).then(story => {
 //     addTitleToPage(story.title);
@@ -87,11 +96,11 @@ let storyUrl = './data/story.json';
 // }).then(hideSpinner);
 
 // 先获取到的数据可以按顺序先展示
-getJSON(storyUrl).then(story => {
-    addTitleToPage(story.title);
-    return story.chapterUrls;
-}).then(chapterUrls => {
-    return chapterUrls.map(getJSON).reduce((start, chapterPromise) => {
-        return start.then(() => chapterPromise).then(addChapterToPage).catch(err => console.log(err));
-    }, Promise.resolve());
-}).then(hideSpinner);
+// getJSON(storyUrl).then(story => {
+//     addTitleToPage(story.title);
+//     return story.chapterUrls;
+// }).then(chapterUrls => {
+//     return chapterUrls.map(getJSON).reduce((start, chapterPromise) => {
+//         return start.then(() => chapterPromise).then(addChapterToPage).catch(err => console.log(err));
+//     }, Promise.resolve());
+// }).then(hideSpinner);
