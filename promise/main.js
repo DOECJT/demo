@@ -53,6 +53,15 @@ function hideSpinner() {
 
 let storyUrl = './data/story.json';
 
+// 依次发出请求,按返回顺序加载页面
+getJSON(storyUrl).then(story => {
+    addTitleToPage(story.title);
+    story.chapterUrls.forEach(chapterUrl => {
+        getJSON(chapterUrl).then(addChapterToPage);
+    });
+})
+hideSpinner();
+
 // 获取到一个段落后再请求下一个段落
 // getJSON(storyUrl).then(story => {
 //     addTitleToPage(story.title);

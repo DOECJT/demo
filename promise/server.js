@@ -35,7 +35,7 @@ const server = http.createServer((request, response) => {
             break;
         }
         setTimeout(() => {
-            response.writeHead(200, {"Content-type": "text/json", "Access-Control-Allow-Origin": "http://localhost:8800"});
+            response.writeHead(200, {"Content-type": "text/json", "Access-Control-Allow-Origin": "http://localhost:8080"});
             response.end(JSON.stringify(chapterList[url]));
         }, timeout);
     }
