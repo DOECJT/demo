@@ -1,0 +1,35 @@
+/* common */
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+/* main */
+#app {
+  display: flex;
+  flex-wrap: wrap;
+}
+.image-container {
+  width: 33.33%;
+  position: relative;
+}
+.image-container .placeholder {
+  padding-bottom: 60%;
+}
+.image-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.5s linear;
+}
+.small-image {
+  filter: blur(50px);
+}
+.large-image {
+  z-index: 9;
+}
+.image-container img.loaded {
+  opacity: 1;
+}
