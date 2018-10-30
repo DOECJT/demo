@@ -87,11 +87,11 @@ let storyUrl = './data/story.json';
 // }).then(hideSpinner);
 
 // 先获取到的数据可以按顺序先展示
-getJSON(storyUrl).then(story => {
-    addTitleToPage(story.title);
-    return story.chapterUrls;
-}).then(chapterUrls => {
-    return chapterUrls.map(getJSON).reduce((start, chapterPromise) => {
-        return start.then(() => chapterPromise).then(addChapterToPage).catch(err => console.log(err));
-    }, Promise.resolve());
-}).then(hideSpinner);
+// getJSON(storyUrl).then(story => {
+//     addTitleToPage(story.title);
+//     return story.chapterUrls;
+// }).then(chapterUrls => {
+//     return chapterUrls.map(getJSON).reduce((start, chapterPromise) => {
+//         return start.then(() => chapterPromise).then(addChapterToPage).catch(err => console.log(err));
+//     }, Promise.resolve());
+// }).then(hideSpinner);
