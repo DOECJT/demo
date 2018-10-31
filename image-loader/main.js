@@ -85,7 +85,7 @@ class ImageLoader {
 
     // 加载大图片
     const largeImage = new Image();
-    largeImage.setAttribute('src', this.largeImage);
+    largeImage.setAttribute('src', this.largeSrc);
     largeImage.setAttribute('class', 'large-image');
     largeImage.addEventListener('load', () => {
       largeImage.classList.add('loaded');
